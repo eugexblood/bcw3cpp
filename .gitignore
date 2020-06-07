@@ -1,3 +1,5 @@
 *.out
 *.exe
 *.DS_Store
+*.o
+main.cpp
