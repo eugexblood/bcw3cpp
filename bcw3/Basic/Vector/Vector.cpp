@@ -1,29 +1,59 @@
-#ifndef VECTOR_H
-#define VECTOR_H
+#include "Vector.h"
 
-class Vector {
-    private:
-        double x;
-        double y;
-    public:
-        Vector(double x=0, double y=0);
-        ~Vector();
+Vector::Vector(double x, double y) {
+    this->x = x;
+    this->y = y;
+}
 
-        double getX() const;
-        double getY() const;
+Vector::~Vector() {}
 
-        void setX(double value);
-        void setY(double value);
+double Vector::getX() const {
+    return this->x;
+}
 
-        double len() const;
-        bool operator==(const Vector& other) const;
-        bool operator!=(const Vector& other) const;
-        void operator+=(const Vector& other);
-        void operator-=(const Vector& other);
-        Vector operator+(const Vector& other) const;
-        Vector operator-(const Vector& other) const;
-};
+double Vector::getY() const {
+    return this->y;
+}
 
-std::ostream& operator<<(std::ostream& out, const Vector& vector);
+void Vector::setX(double value) {
+    this->x = value;
+}
 
-#endif //VECTOR_H
+void Vector::setY(double value) {
+    this->y = value;
+}
+
+double Vector::len() const {
+    return hypot(this->x, this->y);
+}
+
+bool Vector::operator==(const Vector& other) const {
+    return this->x == other.getX() && this->y == other.getY();
+}
+
+bool Vector::operator!=(const Vector& other) const {
+    return !((*this) == other);
+}
+
+void Vector::operator+=(const Vector& other) {
+    this->x += other.getX();
+    this->y += other.getY();
+}
+
+void Vector::operator-=(const Vector& other) {
+    this->x -= other.getX();
+    this->y -= other.getY();
+}
+
+Vector Vector::operator+(const Vector& other) const {
+    return Vector(this->x + other.getX(), this->y + other.getY());
+}
+
+Vector Vector::operator-(const Vector& other) const {
+    return Vector(this->x - other.getX(), this->y - other.getY());
+}
+
+std::ostream& operator<<(std::ostream& out, const Vector& vector) {
+    out << "(" << vector.getX() << ", " << vector.getY() << ")";
+    return out;
+}
