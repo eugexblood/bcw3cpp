@@ -1,9 +1,6 @@
 #include "Vector.h"
 
-Vector::Vector(double x, double y) {
-    this->x = x;
-    this->y = y;
-}
+Vector::Vector(double x, double y) : x(x), y(y) {}
 
 Vector::~Vector() {}
 

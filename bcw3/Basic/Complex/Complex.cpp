@@ -1,9 +1,6 @@
 #include "Complex.h"
 
-Complex::Complex(double real, double imaginary) {
-    this->real = real;
-    this->imaginary = imaginary;
-}
+Complex::Complex(double real, double imaginary) : real(real), imaginary(imaginary) {}
 
 Complex::~Complex() {}
 
