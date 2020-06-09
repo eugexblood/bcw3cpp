@@ -5,7 +5,7 @@
 #include "Point.h"
 
 class OutOfFuel {};
-class ToMuchFuel {};
+class TooMuchFuel {};
 
 class Car {
     private:
