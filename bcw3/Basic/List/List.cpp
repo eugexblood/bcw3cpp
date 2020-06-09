@@ -27,7 +27,7 @@ void List::erase(int index) {
             this->array[i] = this->array[j];
         }
     } else {
-        std::cout << "No element with index " << index << " in this list." << std::endl;
+        std::cout << "No element with index " << index << " in this list. Nothing to erase." << std::endl;
     }
 }
 
@@ -41,7 +41,8 @@ void List::insert(int value, int index) {
         
         this->array[index] = value;
     } else {
-        std::cout << "No element with index " << index << " in this list." << std::endl;
+        this->push_back(value);
+        std::cout << "No index " << index << " in this list. Added to the end." << std::endl;
     }
 }
 
@@ -81,23 +82,34 @@ int List::pop_back() {
     return this->array[this->current];
 }
 
-void List::sort() {
-    for ( int i = 0; i < this->current; i++ ) {
-        int min = this->array[i];
-        int indexMin = i;
-        
-        for ( int j = i + 1; j < this->current; j++ ) {
-            if ( this->array[j] < min ) {
-                min = this->array[j];
-                indexMin = j;
-            }
-        }
-        if ( indexMin != i ) {
-            this->array[indexMin] = this->array[i];
-            this->array[i] = min;
-        }
-    }
+// int compare() needed for qsort()
+int compare(const void* a, const void* b) {
+  return ( *(int*)a - *(int*)b );
 }
+
+void List::sort() {
+    qsort(this->array, this->current, sizeof(int), compare ); // qsort() from included <cstdlib>
+}
+
+// if we're not allowed to use qsort() here is  selection sort below:
+
+// void List::sort() {
+//     for ( int i = 0; i < this->current; i++ ) {
+//         int min = this->array[i];
+//         int indexMin = i;
+        
+//         for ( int j = i + 1; j < this->current; j++ ) {
+//             if ( this->array[j] < min ) {
+//                 min = this->array[j];
+//                 indexMin = j;
+//             }
+//         }
+//         if ( indexMin != i ) {
+//             this->array[indexMin] = this->array[i];
+//             this->array[i] = min;
+//         }
+//     }
+// }
 
 int List::operator[](int index) const {
     return this->array[index];
