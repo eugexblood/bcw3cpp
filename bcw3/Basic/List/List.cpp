@@ -69,7 +69,7 @@ void List::push_back(int value) {
         this->array = newArray;
         this->capacity = newCapacity;
     }
-    this->array[current] = value;
+    this->array[this->current] = value;
     this->current = newCurrent;
 }
 
