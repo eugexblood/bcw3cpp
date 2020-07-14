@@ -1,8 +1,8 @@
 #include "Date.h"
 
 void Date::validate(int day, int month, int year) {
-    if ( year < 1 ) {
-        throw InvalidDate("Year value should be >0.");
+    if ( year < 1900 ) {
+        throw InvalidDate("Year value should be > 1899.");
     }
     if ( month < 1 || month > 12 ) {
         throw InvalidDate("Month value should be from 1 to 12.");
@@ -15,20 +15,17 @@ void Date::validate(int day, int month, int year) {
             if ( day > 29 ) {
                 throw InvalidDate("It is 29 days in February this year.");
             }
-        } else {
-            if ( day > 28 ) {
+        } else if ( day > 28 ) {
                 throw InvalidDate("It is 28 days in February this year.");
-            }
         }
+        return;
     }
     if ( month == 1 || month == 4 || month == 6 || month == 9 || month == 11 ) {
         if ( day > 30 ) {
             throw InvalidDate("It is only 30 days in this month.");
         }
-    } else {
-        if ( day > 31 ) {
+    } else if ( day > 31 ) {
             throw InvalidDate("It is 31 days in this month.");
-        }
     }
 }
 

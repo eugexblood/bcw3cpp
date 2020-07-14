@@ -20,18 +20,23 @@ int Pen::getInkCapacity() const {
 }
 
 void Pen::write(Paper& paper, const std::string& message) {
-    int space = paper.getMaxSymbols() - paper.getSymbols();
-    int messageSize = message.size();
+    int space, messageSize;
+    
+    if ( this->inkAmount == 0 ) {
+        throw OutOfInk();
+    }
+    
+    space = paper.getMaxSymbols() - paper.getSymbols();
+    messageSize = message.size();
     
     if ( this->inkAmount > space && messageSize > space ) {
-        paper.addContent(message.substr(0, space));
         this->inkAmount -= space;
-        throw OutOfSpace();
-    }
-        
-    if ( this->inkAmount <= space && messageSize > this->inkAmount ) {
-        this->inkAmount = 0;
         paper.addContent(message);
+        return;
+    }   
+    if ( this->inkAmount <= space && messageSize > this->inkAmount ) {
+        paper.addContent(message.substr(0, this->inkAmount));
+        this->inkAmount = 0;
         throw OutOfInk();
     }
     

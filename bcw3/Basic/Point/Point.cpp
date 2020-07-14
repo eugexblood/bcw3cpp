@@ -24,18 +24,24 @@ void Point::setY(double value) {
 }
 
 double Point::distance(const Point& other) const {
-    return hypot(this->x - other.getX(), this->y - other.getY());
+    return hypot(this->x - other.x, this->y - other.y);
 }
 
 bool Point::operator==(const Point& other) const {
-    return this->x == other.getX() && this->y == other.getY();
+    return this->x == other.x && this->y == other.y;
 }
 
 bool Point::operator!=(const Point& other) const {
     return !((*this) == other);
 }
 
+// reloading of operator = so we don't need copy constructor
+// void Point::operator=(const Point& other) {
+//     this->x = other.x;
+//     this->y = other.y;
+// }
+
 std::ostream& operator<<(std::ostream& out, const Point& point) {
-    out << "(" << point.getX() << ", " << point.getY() << ")";
+    out << "(" << point.x << ", " << point.y << ")";
     return out;
 }

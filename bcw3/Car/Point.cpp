@@ -13,11 +13,11 @@ double Point::getY() const {
 }
 
 double Point::distance(const Point& other) const {
-    return hypot(this->x - other.getX(), this->y - other.getY());
+    return hypot(this->x - other.x, this->y - other.y);
 }
 
 bool Point::operator==(const Point& other) const {
-    return this->getX() == other.getX() && this->getY() == other.getY();
+    return this->x == other.x && this->y == other.y;
 }
 
 bool Point::operator!=(const Point& other) const {

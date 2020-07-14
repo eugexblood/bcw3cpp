@@ -25,7 +25,7 @@ double Vector::len() const {
 }
 
 bool Vector::operator==(const Vector& other) const {
-    return this->x == other.getX() && this->y == other.getY();
+    return this->x == other.x && this->y == other.y;
 }
 
 bool Vector::operator!=(const Vector& other) const {
@@ -33,21 +33,21 @@ bool Vector::operator!=(const Vector& other) const {
 }
 
 void Vector::operator+=(const Vector& other) {
-    this->x += other.getX();
-    this->y += other.getY();
+    this->x += other.x;
+    this->y += other.y;
 }
 
 void Vector::operator-=(const Vector& other) {
-    this->x -= other.getX();
-    this->y -= other.getY();
+    this->x -= other.x;
+    this->y -= other.y;
 }
 
 Vector Vector::operator+(const Vector& other) const {
-    return Vector(this->x + other.getX(), this->y + other.getY());
+    return Vector(this->x + other.x, this->y + other.y);
 }
 
 Vector Vector::operator-(const Vector& other) const {
-    return Vector(this->x - other.getX(), this->y - other.getY());
+    return Vector(this->x - other.x, this->y - other.y);
 }
 
 std::ostream& operator<<(std::ostream& out, const Vector& vector) {

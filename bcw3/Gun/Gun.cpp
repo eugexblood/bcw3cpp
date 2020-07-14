@@ -30,23 +30,23 @@ int Gun::getTotalShots() const {
 
 void Gun::prepare() {
     this->isReady = true; // "true" is used instead "!this->isReady" so method prepare() will not set "false"
-    std::cout << this->getModel() << ": click-click! Ready to shoot." << std::endl;
+    std::cout << this->model << ": click-click! Ready to shoot." << std::endl;
 }
 
 void Gun::reload() {
     this->amount = this->capacity;
     this->isReady = false; // you will need to prepare before shoot again.
-    std::cout << this->getModel() << ": zzzip! Reloaded." << std::endl;
+    std::cout << this->model << ": zzzip! Reloaded." << std::endl;
 }
 
 void Gun::shoot() {
     if ( this->ready() == false ) {
         throw NotReady();
     }
-    if ( this->getAmount() == 0 ) {
+    if ( this->amount == 0 ) {
         throw OutOfRounds();
     }
-    std::cout << this->getModel() << ": 'Bang!'" << std::endl;
+    std::cout << this->model << ": 'Bang!'" << std::endl;
     this->amount -= 1;
     this->totalShots += 1;
 }

@@ -116,7 +116,7 @@ int List::operator[](int index) const {
 }
 
 bool List::operator==(const List& other) const {
-    if ( this->current != other.size() || this->capacity != other.max_size() ) {
+    if ( this->current != other.current || this->capacity != other.capacity ) {
         return false;
     }
     for ( int i = 0; i < this->current; i++ ) {

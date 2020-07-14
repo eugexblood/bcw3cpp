@@ -21,6 +21,11 @@ class Point {
         double distance(const Point& other) const;
         bool operator==(const Point& other) const;
         bool operator!=(const Point& other) const;
+        
+        // reloading of operator = so we don't need copy constructor
+        // void operator=(const Point& other);
+        
+        friend std::ostream& operator<<(std::ostream& out, const Point& p);
 };
 
 std::ostream& operator<<(std::ostream& out, const Point& point);

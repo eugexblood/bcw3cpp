@@ -13,7 +13,7 @@ double Complex::getImaginary() const {
 }
 
 bool Complex::operator==(const Complex& other) const {
-    return this->real == other.getReal() && this->imaginary == other.getImaginary();
+    return this->real == other.real && this->imaginary == other.imaginary;
 }
 
 bool Complex::operator!=(const Complex& other) const {
@@ -21,25 +21,25 @@ bool Complex::operator!=(const Complex& other) const {
 }
 
 void Complex::operator+=(const Complex& other) {
-    this->real += other.getReal();
-    this->imaginary += other.getImaginary();
+    this->real += other.real;
+    this->imaginary += other.imaginary;
 }
 
 void Complex::operator-=(const Complex& other) {
-    this->real -= other.getReal();
-    this->imaginary -= other.getImaginary();
+    this->real -= other.real;
+    this->imaginary -= other.imaginary;
 }
 
 Complex Complex::operator+(const Complex& other) const {
-    return Complex(this->real + other.getReal(), this->imaginary + other.getImaginary());
+    return Complex(this->real + other.real, this->imaginary + other.imaginary);
 }
 
 Complex Complex::operator-(const Complex& other) const {
-    return Complex(this->real - other.getReal(), this->imaginary - other.getImaginary());
+    return Complex(this->real - other.real, this->imaginary - other.imaginary);
 }
 
 Complex Complex::operator*(const Complex& other) const {
-    return Complex(this->real * other.getReal() - this->imaginary * other.getImaginary(), this->real * other.getImaginary() + this->imaginary * other.getReal());
+    return Complex(this->real * other.real - this->imaginary * other.imaginary, this->real * other.imaginary + this->imaginary * other.real);
 }
 
 std::ostream& operator<<(std::ostream& out, const Complex& complex) {

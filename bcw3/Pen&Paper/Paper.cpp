@@ -41,5 +41,6 @@ void Paper::show() const {
         std::cout << "This paper is clean." << std::endl;
     } else {
         std::cout << "Message on this paper: " << this->content << std::endl;
+        std::cout << "***********" << std::endl;
     }
 }

@@ -63,16 +63,16 @@ void Unit::takeDamage(int dmg) {
 
 void Unit::attack(Unit& enemy) {
     this->ensureIsAlive();
-    std::cout << this->name << " attacks " << enemy.getName() << "." << std::endl;
+    std::cout << this->name << " attacks " << enemy.name << "." << std::endl;
     enemy.takeDamage(this->damage);
-    if ( enemy.getHitPoints() > 0 ) {
+    if ( enemy.hitPoints > 0 ) {
         this->counterAttack(enemy);
     }
 }
 
 void Unit::counterAttack(Unit& enemy) {
-    std::cout << enemy.getName() << " counter attacks " << this->name << "." << std::endl;
-    this->takeDamage(enemy.getDamage()/2);
+    std::cout << enemy.name << " counter attacks " << this->name << "." << std::endl;
+    this->takeDamage(enemy.damage/2);
 }
 
 std::ostream& operator<<(std::ostream& out, const Unit& unit) {
