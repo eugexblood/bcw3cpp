@@ -71,6 +71,7 @@ void Unit::attack(Unit& enemy) {
 }
 
 void Unit::counterAttack(Unit& enemy) {
+    enemy.ensureIsAlive();
     std::cout << enemy.name << " counter attacks " << this->name << "." << std::endl;
     this->takeDamage(enemy.damage/2);
 }
